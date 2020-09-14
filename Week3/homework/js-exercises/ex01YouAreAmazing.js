@@ -23,7 +23,7 @@ if (name === undefined) {
 }
 
 function giveCompliment(yourName) {
-  const comliments = [
+  const compliments = [
     'amazing',
     'incredible',
     'great',
@@ -36,8 +36,8 @@ function giveCompliment(yourName) {
     'wonderful',
   ];
   // get random number from 0 to 9
-  const randomIndex = Math.floor(Math.random() * comliments.length);
-  return `You are ${comliments[randomIndex]}, ${yourName}!`;
+  const randomIndex = Math.floor(Math.random() * compliments.length);
+  return `You are ${compliments[randomIndex]}, ${yourName}!`;
 }
 
 // Call the function three times, giving each function call the same argument: your name.
