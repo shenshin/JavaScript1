@@ -36,7 +36,7 @@ function giveCompliment(yourName) {
     'wonderful',
   ];
   // get random number from 0 to 9
-  const randomIndex = Math.floor(Math.random() * 10);
+  const randomIndex = Math.floor(Math.random() * comliments.length);
   return `You are ${comliments[randomIndex]}, ${yourName}!`;
 }
 
