@@ -26,19 +26,20 @@ let mutableShoppingCard = shoppingCart;
 
 function addToShoppingCart(groceryItem) {
   mutableShoppingCard.push(groceryItem);
+
   if (mutableShoppingCard.length > 3) {
     mutableShoppingCard = mutableShoppingCard.slice(-3);
   }
-  // I would do like this
-  // const outputString = `You bought ${mutableShoppingCard.join(', ')}!`;
-  // but if the task is to loop than here you go
-  let outputString = 'You bought ';
-  for (let item of mutableShoppingCard) {
-    outputString += item + ', ';
-  }
+
+  const outputString = `You bought ${mutableShoppingCard.join(', ')}!`;
+  // this is the way to do same by means of for-loop
+  // let outputString = 'You bought ';
+  // for (let item of mutableShoppingCard) {
+  //   outputString += item + ', ';
+  // }
   // remove last two characters
-  outputString = outputString.slice(0, -2);
-  outputString += '!';
+  // outputString = outputString.slice(0, -2);
+  // outputString += '!';
   console.log(outputString);
 }
 

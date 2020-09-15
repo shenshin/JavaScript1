@@ -35,8 +35,9 @@ function tellFortune(numbersOfChildren, partnerNames, locatons, jobTitles) {
   } with ${returnValues[3]} kid${returnValues[3] > 1 ? 's' : ''}.`;
 
   // Return a string: "You will be a [JOB_TITLE] in [LOCATION], married to [PARTNER_NAME] with [NUMBER_KIDS] kids."
+  // function should better either return or print, but not both at the same time
   console.log(returnString);
-  return returnString;
+  // return returnString;
 }
 
 // Call the function 3 times, by passing the arrays as the argument.
