@@ -8,7 +8,7 @@
 // a book and has properties for the title (string), author (string),
 // and alreadyRead (boolean indicating if you read it yet).
 
-let books = [
+let booksCollection = [
   {
     title: 'The Fellowship of the Ring',
     author: 'J.R.R. Tolkien',
@@ -35,7 +35,7 @@ let books = [
 // If you haven't read it log a string like You still need to
 // read "The Lord of the Rings"
 
-for (let book of books) {
+for (let book of booksCollection) {
   console.log(`${book.title} by ${book.author}`);
   console.log(
     book.alreadyRead ? 'You already read' : 'You still need to read',

@@ -26,12 +26,12 @@ let keyNames = {
 // (for, while or do/while)
 
 for (let key in mealRecipe) {
-  let array = mealRecipe[key];
+  let element = mealRecipe[key];
   let string = '';
-  if (typeof array === 'object') {
-    string = array.join(', ');
+  if (typeof element === 'object') {
+    string = element.join(', ');
   } else {
-    string = array;
+    string = element;
   }
   console.log(`${keyNames[key]}: ${string}`);
 }
