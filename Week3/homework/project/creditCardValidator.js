@@ -63,5 +63,11 @@ function validateCreditNumber(cardNumber) {
 }
 // generate all possible errors:
 console.log(validateCreditNumber('a'));
-// Returns "Success! The input 6666666666661666 is a valid credit card number!
+// output:
+// Invalid! The input a should be 16 digits long!
+// Invalid! The input a should contain at least 2 different types of numbers!
+// Invalid! The input a should contain only numbers!
+// Invalid! The input a should have the last digit even!
+
 console.log(validateCreditNumber('6666666666661666'));
+// output: Success! The input 6666666666661666 is a valid credit card number!
