@@ -26,8 +26,8 @@ const drinkTypes = ['cola', 'lemonade', 'water'];
 // (For example: "Hey guys, I brought a cola, cola, lemonade, lemonade, water!")
 
 for (let i = 0; i < 5; i++) {
-    // I translate indices of of bigger array into smaller one
-    // 0 -> 0, 1 -> 0, 2 -> 1, 3 -> 1, 4 -> 2
-    drinkTray[i] = drinkTypes[Math.floor(i / 2)]
+  // I translate indices of drinkTray[] to the indices of drinkTypes[] as follows:
+  // 0 -> 0, 1 -> 0, 2 -> 1, 3 -> 1, 4 -> 2
+  drinkTray[i] = drinkTypes[Math.floor(i / 2)];
 }
-console.log(`Hey guys, I brought a ${drinkTray.join(', ')}!`)
+console.log(`Hey guys, I brought a ${drinkTray.join(', ')}!`);

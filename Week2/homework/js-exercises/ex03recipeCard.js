@@ -16,7 +16,7 @@ mealRecipe.ingredients = ['4 eggs', '2 strips of bacon', '1 tsp salt/pepper'];
 // additional dictionary to convert given property names
 // to printable strings
 
-let keyNames = {
+const keyNames = {
   title: 'Meal name',
   servings: 'Serves',
   ingredients: 'Ingredients',
@@ -26,7 +26,7 @@ let keyNames = {
 // (for, while or do/while)
 
 for (let key in mealRecipe) {
-  let element = mealRecipe[key];
+  const element = mealRecipe[key];
   let string = '';
   if (typeof element === 'object') {
     string = element.join(', ');

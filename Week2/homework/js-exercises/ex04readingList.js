@@ -8,7 +8,7 @@
 // a book and has properties for the title (string), author (string),
 // and alreadyRead (boolean indicating if you read it yet).
 
-let booksCollection = [
+const booksCollection = [
   {
     title: 'The Fellowship of the Ring',
     author: 'J.R.R. Tolkien',
