@@ -42,18 +42,26 @@ function validateCreditNumber(cardNumber) {
   }
   // print the result of input evaluation to the console
   if (errorsArray.length === 0) {
-    console.log(
-      `Success! The input ${cardNumber} is a valid credit card number!`,
-    );
+    return `Success! The input ${cardNumber} is a valid credit card number!`;
   } else {
-    errorsArray.forEach((error) =>
-      console.log(`Invalid! The input ${cardNumber} should ${error}!`),
+    // I don't want to console.log inside the function, but
+    // I want my function to return a string. For this reason I
+    // convert array of strings to string for further return
+    return (
+      errorsArray
+        // convert array to string using template
+        .reduce(
+          (outputString, nextError) =>
+            outputString +
+            `Invalid! The input ${cardNumber} should ${nextError}!\n`,
+          '',
+        )
+        // remove last '\n' from the resulting string
+        .slice(0, -1)
     );
   }
 }
-
-// Expected output
-
-validateCreditNumber('a92332119c011112'); // Returns "Invalid! The input a92332119c011112 should contain only numbers!
-validateCreditNumber('4444444444444444'); // Returns "Invalid! The input 4444444444444444 should contain at least 2 different types of numbers!
-validateCreditNumber('6666666666661666'); // Returns "Success! The input 6666666666661666 is a valid credit card number!
+// generate all possible errors:
+console.log(validateCreditNumber('a'));
+// Returns "Success! The input 6666666666661666 is a valid credit card number!
+console.log(validateCreditNumber('6666666666661666'));

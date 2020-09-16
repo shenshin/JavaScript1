@@ -40,10 +40,10 @@ function addToShoppingCart(groceryItem) {
   // remove last two characters
   // outputString = outputString.slice(0, -2);
   // outputString += '!';
-  console.log(outputString);
+  return outputString;
 }
 
 // // Expected output
-addToShoppingCart('chocolate'); // Returns "You bought bananas, milk, chocolate!"
-addToShoppingCart('waffles'); // Returns "You bought milk, chocolate, waffles!"
-addToShoppingCart('tea'); // Returns "You bought chocolate, waffles, tea!"
+console.log(addToShoppingCart('chocolate')); // Returns "You bought bananas, milk, chocolate!"
+console.log(addToShoppingCart('waffles')); // Returns "You bought milk, chocolate, waffles!"
+console.log(addToShoppingCart('tea')); // Returns "You bought chocolate, waffles, tea!"
