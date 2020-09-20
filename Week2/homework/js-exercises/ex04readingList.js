@@ -35,7 +35,7 @@ const booksCollection = [
 // If you haven't read it log a string like You still need to
 // read "The Lord of the Rings"
 
-for (let book of booksCollection) {
+for (const book of booksCollection) {
   console.log(`${book.title} by ${book.author}`);
   console.log(
     book.alreadyRead ? 'You already read' : 'You still need to read',
