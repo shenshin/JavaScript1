@@ -25,13 +25,13 @@ const keyNames = {
 // Log each property out separately, using a loop
 // (for, while or do/while)
 
-for (let key in mealRecipe) {
+for (const key in mealRecipe) {
   const element = mealRecipe[key];
   let string = '';
-  if (typeof element === 'object') {
+  if (Array.isArray(element)) {
     string = element.join(', ');
   } else {
-    string = element;
+    string = String(element);
   }
   console.log(`${keyNames[key]}: ${string}`);
 }
