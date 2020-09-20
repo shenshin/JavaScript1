@@ -1,20 +1,37 @@
 // usage:
-// node convertToGrade.js 78
+// node convertNumberToGrade.js 78
 // converts percent to American grade letter
 
 'use strict';
 
 /**
  * Converts percentage to grade in American grading system
- * @param  {number} percentage The number in percent
- * @return {string} American grade letter
+ * @param  {number} percentage the number in percent
+ * @return {string} message with an American grade letter
+ * @throws use Error.message to get an error info
  */
 function convertNumberToGrade(percentage) {
+  // Throwing errors:
+  // Throw an error if there is no value
+  if (percentage === undefined) {
+    throw new Error('Please enter a number in percent!');
+  }
+  // Trying to convert received parameter to a float
   const number = parseFloat(percentage);
-  // Throw an error if it was impossible to convert parameter to float
-  if (number === undefined || !isFinite(number)) throw percentage;
-  // Now I am sure that I'm handling a float number
-  let grade = '?';
+  // Throw an error it was impossible to convert parameter to float
+  if (!isFinite(number)) {
+    throw new Error(
+      `Wrong percent value: '${percentage}'. Put a number instead.`,
+    );
+  }
+  // Throw an error if the number is in a wrong range
+  if (number < 0 || number > 100) {
+    throw new Error(
+      `Illegal percentage: ${percentage}%. Please enter a number between 0 and 100.`,
+    );
+  }
+  // Now I am sure that I'm handling a legal float number
+  let grade = '';
   if (number < 50) {
     grade = 'F';
   } else if (number >= 50 && number < 60) {
@@ -28,20 +45,16 @@ function convertNumberToGrade(percentage) {
   } else {
     grade = 'A';
   }
-  return grade;
+  return `You got a ${grade} (${number}%)!`;
 }
 
-// get number from the command line
+// get number from a command line
 let number = process.argv[2];
 
-// catching illegal parameter from command line
+// Trying to convert a number from a command line.
+// If conversion fails, catching errors from the function
 try {
-  const grade = convertNumberToGrade(number);
-  console.log(`You got a ${grade} (${number}%)!`);
-} catch (illegalParameter) {
-  console.log(
-    illegalParameter === undefined
-      ? 'Please enter percent number!'
-      : `Wrong percent value: '${illegalParameter}'. Put number instead.`,
-  );
+  console.log(convertNumberToGrade(number));
+} catch (error) {
+  console.log(error.message);
 }
