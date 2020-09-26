@@ -34,13 +34,13 @@ function convertNumberToGrade(percentage) {
   let grade = '';
   if (number < 50) {
     grade = 'F';
-  } else if (number >= 50 && number < 60) {
+  } else if (number < 60) {
     grade = 'E';
-  } else if (number >= 60 && number < 70) {
+  } else if (number < 70) {
     grade = 'D';
-  } else if (number >= 70 && number < 80) {
+  } else if (number < 80) {
     grade = 'C';
-  } else if (number >= 80 && number < 90) {
+  } else if (number < 90) {
     grade = 'B';
   } else {
     grade = 'A';
