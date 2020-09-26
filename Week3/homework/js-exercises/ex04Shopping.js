@@ -18,32 +18,53 @@
 
 ///////// If I declare shoppingCart as const, my function would not able to modify it,
 ///////// so I copy shoppingCart to the other 'let' variable 'mutableShoppingCard'
-///////// Another way to do it would be to pass 'shoppingCart' to the function as second parameter
-///////// and that would be much better design than to modify some external variable inside function
 
 const shoppingCart = ['bananas', 'milk'];
-let mutableShoppingCard = shoppingCart;
+// clone array
+let mutableShoppingCard = [...shoppingCart];
 
 function addToShoppingCart(groceryItem) {
   mutableShoppingCard.push(groceryItem);
-
   if (mutableShoppingCard.length > 3) {
     mutableShoppingCard = mutableShoppingCard.slice(-3);
   }
-
-  const outputString = `You bought ${mutableShoppingCard.join(', ')}!`;
-  // this is the way to do same by means of for-loop
-  // let outputString = 'You bought ';
-  // for (let item of mutableShoppingCard) {
-  //   outputString += item + ', ';
-  // }
-  // remove last two characters
-  // outputString = outputString.slice(0, -2);
-  // outputString += '!';
-  return outputString;
+  return `You bought ${mutableShoppingCard.join(', ')}!`;
 }
+// But I suggest to make a class here. 
+// This is a perfect case to use classes, methods, properties etc.
+// The code becomes very neat and readable:
+class ShoppingCart {
+  /**
+   * @param {string[]} groceryItems
+   */
+  constructor(groceryItems) {
+    if (!Array.isArray(groceryItems))
+      throw new TypeError(
+        "parameter 'grosseryItems' must be an array of strings",
+      );
+    this.groceryItems = [...groceryItems]; // clone array
+  }
+  /**
+   * @param {string} groceryItem
+   * @returns {string}
+   */
+  add(groceryItem) {
+    this.groceryItems.push(groceryItem)
+    if (this.groceryItems.length > 3) {
+      this.groceryItems = this.groceryItems.slice(-3);
+    }
+    return this.toString()
+  }
+  toString() {
+    return `You bought ${this.groceryItems.join(', ')}!`;
+  }
+}
+const shoppingCartObject = new ShoppingCart(shoppingCart);
+console.log(shoppingCartObject.add('chocolate'))
+console.log(shoppingCartObject.add('waffels'))
+console.log(shoppingCartObject.add('milk'))
 
 // // Expected output
-console.log(addToShoppingCart('chocolate')); // Returns "You bought bananas, milk, chocolate!"
-console.log(addToShoppingCart('waffles')); // Returns "You bought milk, chocolate, waffles!"
-console.log(addToShoppingCart('tea')); // Returns "You bought chocolate, waffles, tea!"
+//console.log(addToShoppingCart('chocolate')); // Returns "You bought bananas, milk, chocolate!"
+//console.log(addToShoppingCart('waffles')); // Returns "You bought milk, chocolate, waffles!"
+//console.log(addToShoppingCart('tea')); // Returns "You bought chocolate, waffles, tea!"

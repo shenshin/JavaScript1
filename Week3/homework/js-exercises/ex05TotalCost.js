@@ -15,16 +15,9 @@
 
 function calculateTotalPrice(cart) {
   // Loop through the object and add all the number values together
-
-  // I really love the approaches of functional programming:
   const totalPrice = Object.values(cart).reduce(
-    (sum, nextValue) => (sum += nextValue),
-  );
-  // Or with a for-loop:
-  // let totalPrice = 0.0;
-  // for (let item in cart) {
-  //   totalPrice += cart[item];
-  // }
+    (sum, nextValue) => sum += nextValue
+  ); // reduce all the values into their sum
   // Return a string: "Total: €[TOTAL_PRICE_ITEMS]"
   return `Total: €${totalPrice}`;
 }
@@ -41,4 +34,4 @@ const cartForParty = {
 };
 
 // // Expected output
-console.log(calculateTotalPrice(cartForParty)); // Returns "Total: €10.75"
+console.log(calculateTotalPrice(cartForParty)); // Returns "Total: €20.89"

@@ -27,21 +27,19 @@ function tellFortune(numbersOfChildren, partnerNames, locatons, jobTitles) {
   ];
   let returnValues = [];
   // collect random element from all input arrays into one array returnValues[]
-  for (let array of arraysContainer) {
+  for (const array of arraysContainer) {
     // Randomly select values from the arrays.
     const randomIndex = Math.floor(Math.random() * array.length);
     returnValues.push(array[randomIndex]);
   }
-  const returnString = `You will be a${
+  // Return a string: "You will be a [JOB_TITLE] in [LOCATION], married to [PARTNER_NAME] with [NUMBER_KIDS] kids."
+  return `You will be a${
     // check if profession starts with vowel. In this case use 'an' article and otherwise 'a'
     /[aeiou]/i.test(returnValues[0][0]) ? 'n' : ''
   } ${returnValues[0]} in ${returnValues[1]}, married to ${
     returnValues[2]
     // choose whether to use 'kid' in single or plural
   } with ${returnValues[3]} kid${returnValues[3] > 1 ? 's' : ''}.`;
-
-  // Return a string: "You will be a [JOB_TITLE] in [LOCATION], married to [PARTNER_NAME] with [NUMBER_KIDS] kids."
-  return returnString;
 }
 
 // Call the function 3 times, by passing the arrays as the argument.
