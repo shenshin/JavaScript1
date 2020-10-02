@@ -15,9 +15,8 @@
 
 function calculateTotalPrice(cart) {
   // Loop through the object and add all the number values together
-  const totalPrice = Object.values(cart).reduce(
-    (sum, nextValue) => sum += nextValue
-  ); // reduce all the values into their sum
+  // (reduce all the values into their sum)
+  const totalPrice = Object.values(cart).reduce((sum, nextValue) => sum += nextValue, 0.0);
   // Return a string: "Total: €[TOTAL_PRICE_ITEMS]"
   return `Total: €${totalPrice}`;
 }
