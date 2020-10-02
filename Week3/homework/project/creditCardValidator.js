@@ -12,9 +12,13 @@
 // The last number must be even
 // The sum of all the numbers must be greater than 16
 
-function validateCreditNumber(cardNumber) {
+/**
+ * Tests credit card number and prints out ALL detected errors
+ * @param {string[]} cardNumber string containing credit card number
+ */
+function validateCreditCardNumber(cardNumber) {
   // convert string to an array of integers
-  const numbersArray = cardNumber.split('').map(character => parseInt(character))
+  const numbersArray = Array(cardNumber).map(character => parseInt(character))
   let errorsArray = [];
   // check array length
   if (numbersArray.length !== 16) {
@@ -35,8 +39,8 @@ function validateCreditNumber(cardNumber) {
   // check if the sum of all elements is more than 16
   if (
     numbersArray.reduce(
-      (accumulativeValue, currentValue) => 
-      accumulativeValue + (currentValue || 0)
+      (accumulativeValue, currentValue) =>
+        accumulativeValue + (currentValue || 0)
       , 0
     ) <= 16
   ) {
@@ -64,24 +68,24 @@ function validateCreditNumber(cardNumber) {
   }
 }
 // generate all possible errors:
-console.log(validateCreditNumber('0'));
+console.log(validateCreditCardNumber('0'));
 /* Invalid! The input 0 should be 16 digits long!
 Invalid! The input 0 should contain at least 2 different types of numbers!
 Invalid! The input 0 should have the sum of all digits more than 16! */
-console.log(validateCreditNumber('  '));
+console.log(validateCreditCardNumber('  '));
 /* Invalid! The input    should be 16 digits long!
 Invalid! The input    should contain at least 2 different types of numbers!
 Invalid! The input    should contain only numbers!
 Invalid! The input    should have the last digit even!
 Invalid! The input    should have the sum of all digits more than 16! */
-console.log(validateCreditNumber('a'));
+console.log(validateCreditCardNumber('a'));
 /* Invalid! The input a should be 16 digits long!
 Invalid! The input a should contain at least 2 different types of numbers!
 Invalid! The input a should contain only numbers!
 Invalid! The input a should have the last digit even!
 Invalid! The input a should have the sum of all digits more than 16! */
-console.log(validateCreditNumber('10'));
+console.log(validateCreditCardNumber('10'));
 /* Invalid! The input 10 should be 16 digits long!
 Invalid! The input 10 should have the sum of all digits more than 16! */
-console.log(validateCreditNumber('6666666666661666'));
+console.log(validateCreditCardNumber('6666666666661666'));
 // output: Success! The input 6666666666661666 is a valid credit card number!
