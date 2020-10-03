@@ -18,30 +18,21 @@ const jobs = ['programmer', 'accountant', 'unemployed', 'priest', 'scientist'];
 // Write a function named tellFortune.
 // It takes 4 arguments: number of children (number), partner's name (string), geographic location (string), job title (string).
 function tellFortune(numbersOfChildren, partnerNames, locatons, jobTitles) {
-  // question: does JS copy arrays? Will container include copies or references?
-  const arraysContainer = [
-    jobTitles,
-    locatons,
-    partnerNames,
-    numbersOfChildren,
-  ];
-  let returnValues = [];
-  // collect random element from all input arrays into one array returnValues[]
-  for (const array of arraysContainer) {
-    // Randomly select values from the arrays.
-    const randomIndex = Math.floor(Math.random() * array.length);
-    returnValues.push(array[randomIndex]);
-  }
-  // Return a string: "You will be a [JOB_TITLE] in [LOCATION], married to [PARTNER_NAME] with [NUMBER_KIDS] kids."
-  return `You will be a${
-    // check if profession starts with vowel. In this case use 'an' article and otherwise 'a'
-    /[aeiou]/i.test(returnValues[0][0]) ? 'n' : ''
-  } ${returnValues[0]} in ${returnValues[1]}, married to ${
-    returnValues[2]
-    // choose whether to use 'kid' in single or plural
-  } with ${returnValues[3]} kid${returnValues[3] > 1 ? 's' : ''}.`;
-}
 
+  const numberOfChildren = getRandomItemFromArray(numbersOfChildren);
+  const location = getRandomItemFromArray(locations);
+  const partnerName = getRandomItemFromArray(partnerNames);
+  const jobTitle = getRandomItemFromArray(jobTitles);
+  // check if profession starts with vowel. In this case use 'an' article and otherwise 'a'
+  const jobTitleWithArticle = `a${/^[aeiou]/i.test(jobTitle) ? 'n' : ''} ${jobTitle}`;
+  // Return a string: "You will be a [JOB_TITLE] in [LOCATION], married to [PARTNER_NAME] with [NUMBER_KIDS] kids."
+  return `You will be ${jobTitleWithArticle} in ${location}, married to 
+  ${partnerName} with ${numberOfChildren} kid${numberOfChildren > 1 ? 's' : ''}.`;
+}
+function getRandomItemFromArray(array) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
 // Call the function 3 times, by passing the arrays as the argument.
 
 console.log(tellFortune(numChildren, partnerNames, locations, jobs));
